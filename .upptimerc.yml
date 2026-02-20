@@ -1,33 +1,94 @@
 owner: alanviotto
 repo: status
 
+# Configurações de Identidade Visual
+# Substitua as URLs abaixo pelos logos reais da Dialab quando possível
+icon: https://raw.githubusercontent.com/alanviotto/status/master/assets/icon.png
+logo-url: https://portal.dialab.ai/images/logo-dialab.png 
+
 sites:
-  - name: Portal Prod
+  - id: portal-prod
+    name: "🚀 Portal Produção"
     url: https://portal.dialab.ai
     
-  - name: Portal Staging
+  - id: portal-stg
+    name: "🛠️ Portal Staging"
     url: https://portal-dialab.webflow.io
     
-  - name: API Inteligencia de Vida
+  - id: api-iv
+    name: "🧠 API Inteligencia de Vida"
     url: https://api.login.inteligenciadevida.tec.br/api/Client
     headers:
       - "accept: */*"
       - "x-app-id: $INTELIGENCIA_VIDA_APP_ID"
       
-  - name: Banco Supabase Prod
+  - id: db-prod
+    name: "📦 Banco Supabase Prod"
     url: $SUPABASE_PROD_URL/rest/v1/
     headers:
       - "apikey: $SUPABASE_PROD_KEY"
       - "Authorization: Bearer $SUPABASE_PROD_KEY"
       
-  - name: Banco Supabase Staging
+  - id: db-stg
+    name: "🧪 Banco Supabase Staging"
     url: $SUPABASE_STG_URL/rest/v1/
     headers:
       - "apikey: $SUPABASE_STG_KEY"
       - "Authorization: Bearer $SUPABASE_STG_KEY"
 
+# Agrupamento para melhor visualização
+groups:
+  - name: Ambiente de Produção
+    monitors:
+      - portal-prod
+      - db-prod
+  - name: Ambiente de Homologação (Staging)
+    monitors:
+      - portal-stg
+      - db-stg
+  - name: Serviços Externos
+    monitors:
+      - api-iv
+
 status-website:
   baseUrl: /status
   name: Dialab Status
-  introTitle: "Página de Status da Infraestrutura do Portal Dialab."
+  introTitle: "Página de Status da Infraestrutura Dialab"
   introMessage: "Monitoramento em tempo real dos nossos portais, bancos de dados e APIs externas."
+  navbar:
+    - title: Status
+      href: /status
+    - title: Portal Dialab
+      href: https://portal.dialab.ai
+  
+  # Customização de Cores e Estilo
+  theme: dark # Mantém o tema dark que já aparece no seu print
+  customCSS: |
+    /* Fontes Modernas */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Estilização dos Cards */
+    .card {
+      border-radius: 16px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      background: rgba(22, 27, 34, 0.8) !important;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #00f2fe !important; /* Cor neon para destaque */
+    }
+
+    /* Ajuste nos Gráficos */
+    svg path {
+      fill: rgba(0, 242, 254, 0.05) !important;
+      stroke: #00f2fe !important;
+      stroke-width: 2.5px;
+    }
+
+    /* Esconde o rodapé padrão se quiser um visual cleaner */
+    footer { opacity: 0.7; font-size: 0.8rem; }
