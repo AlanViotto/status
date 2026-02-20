@@ -1,4 +1,4 @@
-owner: AlanViotto
+owner: alanviotto
 repo: status
 
 sites:
@@ -27,7 +27,6 @@ sites:
       - "Authorization: Bearer $SUPABASE_STG_KEY"
 
 status-website:
-  cname: "" # Deixe vazio por enquanto. Se quiser um domínio tipo status.dialab.ai depois, coloque aqui.
   name: Dialab Status
   introTitle: "Página de Status da Infraestrutura do Portal Dialab."
   introMessage: "Monitoramento em tempo real dos nossos portais, bancos de dados e APIs externas."
