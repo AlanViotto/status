@@ -12,7 +12,7 @@ sites:
     url: https://api.login.inteligenciadevida.tec.br/api/Client
     headers:
       - "accept: */*"
-      - "x-app-id: 17ce2fbd-2609-4b4d-8afa-d814141f4aed"
+      - "x-app-id: $INTELIGENCIA_VIDA_APP_ID"
       
   - name: Banco Supabase Prod
     url: $SUPABASE_PROD_URL/rest/v1/
