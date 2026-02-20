@@ -27,6 +27,7 @@ sites:
       - "Authorization: Bearer $SUPABASE_STG_KEY"
 
 status-website:
+  baseUrl: /status
   name: Dialab Status
   introTitle: "Página de Status da Infraestrutura do Portal Dialab."
   introMessage: "Monitoramento em tempo real dos nossos portais, bancos de dados e APIs externas."
