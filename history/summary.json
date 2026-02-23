@@ -15,7 +15,9 @@
     "timeWeek": 277,
     "timeMonth": 277,
     "timeYear": 277,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-02-23": 0
+    }
   },
   {
     "name": "🛠️ Portal Staging",
